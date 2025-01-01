@@ -21,7 +21,6 @@ const EmptyQuestionMessage = (props) => {
         </div>
       </div>
     </div>
-
   )
 }
 
