@@ -5,7 +5,7 @@ class  Api::V1::QuestionsController < ApplicationController
     if params[:tags].present? && params[:tags] != 'All'
       @questions = Question.where(tag: params[:tags])
     else
-    @questions = Question.all
+      @questions = Question.all
     end
     render json: @questions, status: :ok
   end
