@@ -1,5 +1,4 @@
 import * as React from 'react'
-import { useEffect } from 'react'
 
 class QuestionDetails extends React.Component {
   constructor(props) {
@@ -34,7 +33,7 @@ class QuestionDetails extends React.Component {
   }
 
   updateQuestionCounter = (data) => {
-    const url = `http://localhost:3000/api/v1/questions/${this.props.question.id}/update_counter`
+    const url = `/api/v1/questions/${this.props.question.id}/update_counter`
 
     fetch(url, {
       method: 'PUT',

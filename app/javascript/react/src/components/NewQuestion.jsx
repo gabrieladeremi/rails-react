@@ -32,7 +32,7 @@ const NewQuestion = () => {
   }
 
   const createQuestion = (data) => {
-    const url = `http://localhost:3000/api/v1/questions`
+    const url = `/api/v1/questions`
 
     fetch(url, {
       method: 'POST',
