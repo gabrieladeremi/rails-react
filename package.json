@@ -6,6 +6,7 @@
     "esbuild": "^0.24.2"
   },
   "scripts": {
+    "start": "bin/rails server -b 0.0.0.0 -p $PORT",
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --format=esm --outdir=app/assets/builds --public-path=/assets",
     "preinstall": "corepack enable",
     "build:css:compile": "sass ./app/assets/stylesheets/application.bootstrap.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules",
