@@ -4,16 +4,17 @@ import { useState, useEffect } from 'react'
 import QuestionDetails from './QuestionDetails'
 import EmptyQuestionMessage from './EmptyQuestionMessage'
 import Loader from './Loader'
+import NewQuestion from './NewQuestion'
 
 const QuestionList = () => {
 
   const questionTags = [
-    { label: 'All', value: 0 },
-    { label: 'Ruby', value: 1 },
-    { label: 'Rails', value: 2 },
-    { label: 'React', value: 3 },
-    { label: 'Bootstrap', value: 4 },
-    { label: 'JS', value: 5 }
+    { label: 'Ruby', value: 0 },
+    { label: 'Rails', value: 1 },
+    { label: 'React', value: 2 },
+    { label: 'Bootstrap', value: 3 },
+    { label: 'JS', value: 4 },
+    { label: 'Data Science', value: 5}
   ]
 
   const [questionList, setQuestionList] = useState([])
@@ -65,6 +66,9 @@ const QuestionList = () => {
     <div className='row'>
       <div className="col-lg-10 mx-auto mb-3">
         <p className="lead fw-bold">Filter questions by tags</p>
+        <button type="button" className="btn btn-primary mt-3 mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          Add Question
+        </button>
         <select name="" id="" className="form-select form-select-lg" value={selectedOption} onChange={event => updateSelectedItem(event)}>
           {questionTags.map(tag => (
             <option key={tag.value} value={tag.value}> {tag.label} </option>
@@ -79,6 +83,7 @@ const QuestionList = () => {
           isShowAlert &&  <EmptyQuestionMessage tagname={questionTags[selectedOption].label}/>
         }
       </div>
+      <NewQuestion />
     </div>
   )
 

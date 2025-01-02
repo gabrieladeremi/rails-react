@@ -10,6 +10,16 @@ class  Api::V1::QuestionsController < ApplicationController
     render json: @questions, status: :ok
   end
 
+  def create
+    @question = Question.new(question_params)
+
+    if @question.save
+      render json: { data: @question, status: 'success' }, status: :ok
+    else
+      render json: { data: @question.errors.full_message, status: 'failure' }, status: :unprocessable_entity
+    end
+  end
+
   def update_counter
     @question = Question.find(params[:id])
 
@@ -20,5 +30,11 @@ class  Api::V1::QuestionsController < ApplicationController
       @question.update(dislikes_count: @question.dislikes_count + 1)
     end
     render json: @question, status: :ok
+  end
+
+  private
+
+  def question_params
+    params.require(:question).permit(:title, :tag)
   end
 end
