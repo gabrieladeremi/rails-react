@@ -77,7 +77,7 @@ const QuestionList = () => {
         {questionList.length > 0 ?
           questionList.map((question) =>
             <QuestionDetails question={question} key={question.id}/>
-          ) : <Loader isShowLoader={isShowLoader}/>
+          ) : <Loader isShowLoader={ isShowLoader }/>
         }
         {
           isShowAlert &&  <EmptyQuestionMessage tagname={questionTags[selectedOption].label}/>
