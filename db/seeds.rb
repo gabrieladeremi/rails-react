@@ -37,4 +37,4 @@ Question.create(
   ]
 )
 
-puts 'Questions Create'
+puts 'Questions Created successfully'
