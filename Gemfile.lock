@@ -162,6 +162,7 @@ GEM
     nokogiri (1.18.0-x86_64-linux-musl)
       racc (~> 1.4)
     ostruct (0.6.1)
+    pg (1.5.9)
     psych (5.2.2)
       date
       stringio
@@ -277,6 +278,7 @@ DEPENDENCIES
   jbuilder
   jsbundling-rails
   ostruct
+  pg
   puma (>= 5.0)
   rails (~> 7.1.5, >= 7.1.5.1)
   selenium-webdriver
