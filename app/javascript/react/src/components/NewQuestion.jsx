@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 
+import ServerSideError from './ServerSideError'
+
 const NewQuestion = () => {
   const questionTags = [
     { label: 'Ruby', value: 'Ruby' },
@@ -10,7 +12,9 @@ const NewQuestion = () => {
     { label: 'Data Science', value: 'Data Science'}
   ]
 
-  const [formFields, setFormFields] = useState({
+  const [ isServerSideError, setIsServerSideError ] = useState(false)
+  const [serverErrors, setServerErrors ] = useState([])
+  const [ formFields, setFormFields ] = useState({
     title: '',
     tag: questionTags[0].value
   })
@@ -28,7 +32,7 @@ const NewQuestion = () => {
   }
 
   const createQuestion = (data) => {
-    const url = `/api/v1/questions`
+    const url = `http://localhost:3000/api/v1/questions`
 
     fetch(url, {
       method: 'POST',
@@ -40,6 +44,13 @@ const NewQuestion = () => {
     .then((response) => response.json())
     .then((data) => {
       console.log('Success:', data)
+      if(data['status'] === 'failure') {
+        setIsServerSideError(true)
+        setServerErrors(data['data'])
+      } else {
+        setIsServerSideError(false)
+        setServerErrors([])
+      }
     })
     .catch((error) => console.log('error', error))
   }
@@ -55,6 +66,7 @@ const NewQuestion = () => {
           </div>
           <form onSubmit={handleQuestionSubmit}>
             <div className="modal-body">
+              { isServerSideError && <ServerSideError errors={serverErrors}/> }
               <div className="form-group">
                 <label className="form-label mt-3 mb-3">Title</label>
                 <input

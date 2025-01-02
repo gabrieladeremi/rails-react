@@ -16,7 +16,7 @@ class  Api::V1::QuestionsController < ApplicationController
     if @question.save
       render json: { data: @question, status: 'success' }, status: :ok
     else
-      render json: { data: @question.errors.full_message, status: 'failure' }, status: :unprocessable_entity
+      render json: { data: @question.errors.full_messages, status: 'failure' }, status: :unprocessable_entity
     end
   end
 
